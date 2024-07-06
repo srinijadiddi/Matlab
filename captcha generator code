@@ -1,0 +1,25 @@
+import random
+import string
+from PIL import Image, ImageDraw, ImageFont
+def generate_captcha_text(length=5):
+    characters = string.ascii_letters + string.digits
+    captcha_text = ' '.join(random.choices(characters, k=length))
+    return captcha_text
+def create_captcha_image(captcha_text):
+    width, height = 150, 60
+    image = Image.new('RGB', (width, height), (255, 255, 255))
+    draw = ImageDraw.Draw(image)
+    try:
+        font = ImageFont.truetype("arial.ttf", 40)
+    except IOError:
+        font = ImageFont.load_default()
+    text_color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+    text_width, text_height = draw.textsize(captcha_text, font=font)
+    text_x = (width - text_width) // 2
+    text_y = (height - text_height) //2
+    draw.text((text_x, text_y), captcha_text, font=font, fill=text_color)
+    return image
+captcha_text = generate_captcha_text()
+captcha_image = create_captcha_image(captcha_text)
+captcha_image.save("/mnt/data/captcha_no_lines.png")
+captcha_image.show()
