@@ -1,0 +1,15 @@
+def flames(name1, name2):
+    name1 = name1.replace(" ", "").lower()
+    name2 = name2.replace(" ", "").lower()
+    unique_chars = set(name1 + name2)
+    common_chars = 0
+    for char in unique_chars:
+        common_chars += min(name1.count(char), name2.count(char))
+    remaining_chars = len(name1) + len(name2) - 2 * common_chars
+    flames_relationships = ["Friends", "Lovers", "Affectionate", "Marriage", "Enemies", "Siblings"]
+    flames_index = remaining_chars % len(flames_relationships)
+    return flames_relationships[flames_index]
+name1 = input("Enter the first name: ")
+name2 = input("Enter the second name: ")
+result = flames(name1, name2)
+print(f"The Flames result is: {result}")
