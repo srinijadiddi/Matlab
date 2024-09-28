@@ -1,0 +1,8 @@
+def find_runner_up(scores):
+    unique_scores = set(scores)
+    unique_scores.remove(max(unique_scores))
+    runner_up = max(unique_scores)
+    return runner_up
+scores = [10, 20, 20, 30, 30, 40, 50]
+runner_up_score = find_runner_up(scores)
+print("The runner-up score is:", runner_up_score)
