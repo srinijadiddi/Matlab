@@ -1,0 +1,9 @@
+def generate_greeting(first_name, last_name):
+return f"Hello, {first_name} {last_name}!"
+def main():
+first_name input("Please enter your first name: ")
+last_name input("Please enter your last name:")
+greeting generate_greeting(first_name,last_name)
+print(greeting)
+if_name__ == "main_":
+main()
