@@ -1,0 +1,8 @@
+import pandas as pd
+data = {
+    'Factor': ['Income', 'Health', 'Social Support', 'Freedom', 'Generosity', 'Trust'],
+    'Score': [8, 7, 9, 6, 5, 4]  # Hypothetical scores for each factor
+}
+df = pd.DataFrame(data)
+happiness_score = df['Score'].mean()
+print(f"The calculated happiness score is: {happiness_score}")
